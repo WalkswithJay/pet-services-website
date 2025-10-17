@@ -3,235 +3,860 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walks with Jay & Aarion - Professional Pet Services</title>
+    <title>Walks with Jay & Aarion - Professional Pet Services in Gilbert, AZ</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        .gradient-bg { background: linear-gradient(135deg, #f97316, #fb923c); }
-        .smooth-scroll { scroll-behavior: smooth; }
-        .card-hover { transition: transform 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); }
+        * {
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .playful-font {
+            font-family: 'Comic Neue', cursive;
+        }
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #ff7e5f 0%, #feb47b 50%, #ffdc7f 100%);
+        }
+        
+        .teal-gradient {
+            background: linear-gradient(135deg, #0fa3b1 0%, #3bb3bd 50%, #7fd9e2 100%);
+        }
+        
+        .purple-gradient {
+            background: linear-gradient(135deg, #9d4edd 0%, #c77dff 50%, #e0aaff 100%);
+        }
+        
+        .card-hover {
+            transition: all 0.4s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .paw-print {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='30' cy='30' r='15' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='70' cy='30' r='15' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='50' cy='60' r='20' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='25' cy='70' r='10' fill='%23ffffff' opacity='0.1'/%3E%3Ccircle cx='75' cy='70' r='10' fill='%23ffffff' opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+        
+        .smooth-scroll {
+            scroll-behavior: smooth;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, -15px); }
+            100% { transform: translate(0, 0px); }
+        }
+        
+        .bounce {
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .testimonial-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.5rem;
+            border-left: 5px solid #ff7e5f;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff7e5f, #feb47b);
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: #ff7e5f;
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: #ff7e5f;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 50%;
+            background-color: #ff7e5f;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 126, 95, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 126, 95, 0.5);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #ff7e5f;
+        }
+        
+        .faq-item {
+            background: white;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .faq-item:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: #f9fafb;
+        }
+        
+        .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            display: none;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-icon.rotated {
+            transform: rotate(180deg);
+        }
+        
+        .star-rating {
+            color: #fbbf24;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .gallery-item {
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
     </style>
 </head>
-<body class="smooth-scroll">
+<body class="smooth-scroll bg-gray-50">
     <!-- Navigation -->
-    <nav class="fixed top-0 w-full bg-white shadow-lg z-50">
-        <div class="max-w-7xl mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="font-bold text-xl text-gray-800">Walks with Jay & Aarion</div>
-                <div class="hidden md:flex space-x-6">
-                    <a href="#home" class="hover:text-orange-500">Home</a>
-                    <a href="#services" class="hover:text-orange-500">Services</a>
-                    <a href="#contact" class="hover:text-orange-500">Contact</a>
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md shadow-lg z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center">
+                    <div class="w-12 h-12 mr-3 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-xl">🐾</span>
+                    </div>
+                    <span class="text-2xl font-bold text-gray-800 playful-font">Walks with Jay & Aarion</span>
                 </div>
-                <button id="menu-btn" class="md:hidden text-2xl">☰</button>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link text-gray-700 font-medium">Home</a>
+                    <a href="#services" class="nav-link text-gray-700 font-medium">Services</a>
+                    <a href="#gallery" class="nav-link text-gray-700 font-medium">Gallery</a>
+                    <a href="#testimonials" class="nav-link text-gray-700 font-medium">Reviews</a>
+                    <a href="#pricing" class="nav-link text-gray-700 font-medium">Pricing</a>
+                    <a href="#faq" class="nav-link text-gray-700 font-medium">FAQ</a>
+                    <a href="#blog" class="nav-link text-gray-700 font-medium">Tips</a>
+                    <a href="#contact" class="nav-link text-gray-700 font-medium">Contact</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-orange-500">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden mt-4 space-y-2 border-t pt-4">
-                <a href="#home" class="block py-2 hover:text-orange-500">Home</a>
-                <a href="#services" class="block py-2 hover:text-orange-500">Services</a>
-                <a href="#contact" class="block py-2 hover:text-orange-500">Contact</a>
+            <!-- Mobile menu -->
+            <div id="mobile-menu" class="hidden md:hidden pb-4">
+                <a href="#home" class="block py-2 text-gray-700 hover:text-orange-500">Home</a>
+                <a href="#services" class="block py-2 text-gray-700 hover:text-orange-500">Services</a>
+                <a href="#gallery" class="block py-2 text-gray-700 hover:text-orange-500">Gallery</a>
+                <a href="#testimonials" class="block py-2 text-gray-700 hover:text-orange-500">Reviews</a>
+                <a href="#pricing" class="block py-2 text-gray-700 hover:text-orange-500">Pricing</a>
+                <a href="#faq" class="block py-2 text-gray-700 hover:text-orange-500">FAQ</a>
+                <a href="#blog" class="block py-2 text-gray-700 hover:text-orange-500">Tips</a>
+                <a href="#contact" class="block py-2 text-gray-700 hover:text-orange-500">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white pt-20">
-        <div class="text-center px-4 max-w-4xl">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Walks with Jay & Aarion Pet Services</h1>
-            <p class="text-xl mb-8">Professional Pet Care in Gilbert, AZ</p>
-            <p class="text-lg mb-8 opacity-90">Reliable dog walking, pet sitting, and grooming services with a personal touch for your furry family members.</p>
-            <a href="#contact" class="bg-white text-orange-500 px-8 py-3 rounded-full font-bold inline-block hover:bg-gray-100 transition">Book Now</a>
+    <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white pt-20 relative overflow-hidden paw-print">
+        <div class="absolute top-10 right-10 floating">
+            <span class="text-6xl">🐕</span>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h2 class="text-3xl font-bold mb-4">Our Pet Care Services</h2>
-            <p class="text-gray-600 mb-12 max-w-2xl mx-auto">Comprehensive, loving care for your furry family members with services tailored to their unique needs.</p>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Dog Walking -->
-                <div class="p-8 border-2 border-orange-200 rounded-2xl card-hover">
-                    <div class="text-5xl mb-6">🐕</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Dog Walking</h3>
-                    <p class="text-gray-600 mb-2">Daily walks, potty breaks, and playtime</p>
-                    <p class="text-gray-600 mb-2">Photo updates during walks</p>
-                    <p class="text-gray-600 mb-6">Weather-appropriate care</p>
-                    <div class="text-3xl font-bold text-orange-500">$25</div>
-                    <p class="text-gray-500">30 minutes</p>
+        <div class="absolute bottom-20 left-10 bounce">
+            <span class="text-5xl">🐾</span>
+        </div>
+        <div class="absolute top-1/3 left-20 floating" style="animation-delay: 1s;">
+            <span class="text-4xl">🎾</span>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-12 items-center relative z-10">
+            <div class="fade-in">
+                <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight playful-font">Walks with Jay & Aarion <span class="text-yellow-300">Pet Services</span></h1>
+                <p class="text-xl lg:text-2xl mb-8 opacity-90 font-semibold">🐶 Reliable Pet Care with a Personal Touch</p>
+                <p class="text-lg mb-8 opacity-80 bg-white/20 p-6 rounded-2xl backdrop-blur-sm">Welcome to Walks with Jay & Aarion Pet Services — your trusted partner for dog walking, pet sitting, and grooming in Gilbert, AZ. Whether you're heading to work for the day or out of town, we treat your pets like family.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="btn-primary text-center pulse">Book Now</a>
+                    <a href="#services" class="btn-secondary text-center">Our Services</a>
                 </div>
-
-                <!-- Pet Sitting -->
-                <div class="p-8 border-2 border-teal-200 rounded-2xl card-hover">
-                    <div class="text-5xl mb-6">🏠</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Pet Sitting</h3>
-                    <p class="text-gray-600 mb-2">Feeding & fresh water</p>
-                    <p class="text-gray-600 mb-2">Playtime & companionship</p>
-                    <p class="text-gray-600 mb-6">Litter box maintenance</p>
-                    <div class="text-3xl font-bold text-teal-500">$35</div>
-                    <p class="text-gray-500">Per hour</p>
-                </div>
-
-                <!-- Grooming -->
-                <div class="p-8 border-2 border-yellow-200 rounded-2xl card-hover">
-                    <div class="text-5xl mb-6">✂️</div>
-                    <h3 class="text-2xl font-bold mb-4 text-gray-800">Grooming</h3>
-                    <p class="text-gray-600 mb-2">Brushing & de-shedding</p>
-                    <p class="text-gray-600 mb-2">Nail trimming</p>
-                    <p class="text-gray-600 mb-6">Gentle, stress-free baths</p>
-                    <div class="text-3xl font-bold text-yellow-600">$25+</div>
-                    <p class="text-gray-500">Starting price</p>
+            </div>
+            <div class="flex justify-center lg:justify-end">
+                <div class="relative">
+                    <div class="w-96 h-96 bg-white/20 rounded-3xl backdrop-blur-sm border-2 border-white/30 flex items-center justify-center">
+                        <div class="text-center">
+                            <span class="text-8xl mb-4 block">🐩</span>
+                            <p class="text-white font-semibold">Your Happy Pet Awaits!</p>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-yellow-300 rounded-full flex items-center justify-center text-4xl z-20 shadow-lg">
+                        ❤️
+                    </div>
+                    <div class="absolute -top-6 -left-6 w-20 h-20 bg-teal-400 rounded-full flex items-center justify-center text-3xl z-20 shadow-lg">
+                        ⭐
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section with FIXED Netlify Forms -->
-    <section id="contact" class="py-20 bg-gray-50">
-        <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl font-bold mb-4 text-center">Get In Touch</h2>
-            <p class="text-gray-600 mb-12 text-center max-w-2xl mx-auto">Ready to give your pet the care they deserve? Contact us today!</p>
-            
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Contact Info -->
-                <div>
-                    <div class="bg-white p-8 rounded-2xl shadow-lg mb-6">
-                        <h3 class="text-2xl font-bold mb-6 text-gray-800">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <!-- Jay -->
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-orange-500 rounded-full flex items-center justify-center mr-4">
-                                    <span class="text-white font-bold">J</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Jay</h4>
-                                    <a href="tel:763-313-2815" class="text-orange-600 font-semibold text-lg hover:underline">763-313-2815</a>
-                                    <p class="text-gray-600 text-sm">Available for all services</p>
-                                </div>
-                            </div>
-
-                            <!-- Aarion -->
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-teal-500 rounded-full flex items-center justify-center mr-4">
-                                    <span class="text-white font-bold">A</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Aarion</h4>
-                                    <a href="tel:612-472-0096" class="text-teal-600 font-semibold text-lg hover:underline">612-472-0096</a>
-                                    <p class="text-gray-600 text-sm">Available for all services</p>
-                                </div>
-                            </div>
-
-                            <!-- Email -->
-                            <div class="flex items-start">
-                                <div class="w-12 h-12 bg-blue-500 rounded-full flex items-center justify-center mr-4">
-                                    <span class="text-white">📧</span>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-lg">Email</h4>
-                                    <a href="mailto:walkswithjayandaarion@yahoo.com" class="text-blue-600 font-semibold text-lg hover:underline">walkswithjayandaarion@yahoo.com</a>
-                                    <p class="text-gray-600 text-sm">We respond within 24 hours</p>
-                                </div>
-                            </div>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 playful-font">Our Paw-some Services</h2>
+                <div class="w-24 h-2 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">We provide comprehensive, loving care for your furry family members with professional services tailored to their unique needs.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Dog Walking Card -->
+                <div class="service-card card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 gradient-bg rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                            🐕
                         </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Dog Walking</h3>
                     </div>
-
-                    <!-- Service Areas -->
-                    <div class="bg-white p-6 rounded-2xl shadow-lg">
-                        <h4 class="font-bold text-lg mb-3">Service Areas</h4>
-                        <p class="text-gray-600">Gilbert, Mesa, Chandler, and surrounding areas in Arizona</p>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">Daily walks, potty breaks, and playtime tailored to your dog's energy level and personality. We ensure your pup gets the exercise and attention they need.</p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-gray-600"><span class="text-orange-500 mr-2 text-xl">✓</span> <span>Customized walk duration</span></div>
+                        <div class="flex items-center text-gray-600"><span class="text-orange-500 mr-2 text-xl">✓</span> <span>Photo updates during walks</span></div>
+                        <div class="flex items-center text-gray-600"><span class="text-orange-500 mr-2 text-xl">✓</span> <span>Weather-appropriate care</span></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-orange-500 mb-2">$25</div>
+                        <p class="text-gray-500">30 minutes</p>
                     </div>
                 </div>
 
-                <!-- FIXED Netlify Contact Form -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg">
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800">Send Us a Message</h3>
+                <!-- Pet Sitting Card -->
+                <div class="service-card card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 teal-gradient rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                            🏠
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Pet Sitting</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">In-home visits for feeding, cuddles, and companionship while you're away. Your pets stay comfortable in their familiar environment.</p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-gray-600"><span class="text-teal-500 mr-2 text-xl">✓</span> <span>Feeding & fresh water</span></div>
+                        <div class="flex items-center text-gray-600"><span class="text-teal-500 mr-2 text-xl">✓</span> <span>Playtime & companionship</span></div>
+                        <div class="flex items-center text-gray-600"><span class="text-teal-500 mr-2 text-xl">✓</span> <span>Litter box maintenance</span></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-teal-500 mb-2">$35</div>
+                        <p class="text-gray-500">Per hour</p>
+                    </div>
+                </div>
+
+                <!-- Grooming Card -->
+                <div class="service-card card-hover">
+                    <div class="text-center mb-6">
+                        <div class="w-20 h-20 purple-gradient rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
+                            ✂️
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Grooming</h3>
+                    </div>
+                    <p class="text-gray-600 text-lg leading-relaxed mb-6">Basic grooming services including brushing, nail trims, and baths — stress-free and gentle care to keep your pet looking and feeling their best.</p>
+                    <div class="space-y-2 mb-6">
+                        <div class="flex items-center text-gray-600"><span class="text-purple-500 mr-2 text-xl">✓</span> <span>Brushing & de-shedding</span></div>
+                        <div class="flex items-center text-gray-600"><span class="text-purple-500 mr-2 text-xl">✓</span> <span>Nail trimming</span></div>
+                        <div class="flex items-center text-gray-600"><span class="text-purple-500 mr-2 text-xl">✓</span> <span>Gentle, stress-free baths</span></div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-3xl font-bold text-purple-500 mb-2">$25+</div>
+                        <p class="text-gray-500">Starting price</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-20 bg-gradient-to-br from-orange-50 to-yellow-50">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 playful-font">Our Happy Pets Gallery</h2>
+                <div class="w-24 h-2 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">A glimpse into the joyful moments we share with our furry friends</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="gallery-item bg-gradient-to-br from-orange-200 to-orange-300 h-40 rounded-2xl flex items-center justify-center text-4xl">🐶</div>
+                <div class="gallery-item bg-gradient-to-br from-teal-200 to-teal-300 h-40 rounded-2xl flex items-center justify-center text-4xl">🐱</div>
+                <div class="gallery-item bg-gradient-to-br from-yellow-200 to-yellow-300 h-40 rounded-2xl flex items-center justify-center text-4xl">🐾</div>
+                <div class="gallery-item bg-gradient-to-br from-purple-200 to-purple-300 h-40 rounded-2xl flex items-center justify-center text-4xl">🎾</div>
+                <div class="gallery-item bg-gradient-to-br from-pink-200 to-pink-300 h-40 rounded-2xl flex items-center justify-center text-4xl">❤️</div>
+                <div class="gallery-item bg-gradient-to-br from-blue-200 to-blue-300 h-40 rounded-2xl flex items-center justify-center text-4xl">🏆</div>
+                <div class="gallery-item bg-gradient-to-br from-green-200 to-green-300 h-40 rounded-2xl flex items-center justify-center text-4xl">⭐</div>
+                <div class="gallery-item bg-gradient-to-br from-red-200 to-red-300 h-40 rounded-2xl flex items-center justify-center text-4xl">😊</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-gray-50">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 playful-font">Barking Happy Reviews</h2>
+                <div class="w-24 h-2 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl text-gray-600">Don't just take our word for it - hear from our happy pet parents!</p>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="testimonial-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 mb-4 italic">"Aarion is amazing with our golden retriever! Always on time, super friendly, and our dog loves him."</p>
+                    <div class="font-semibold text-gray-800">– Sarah M.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 mb-4 italic">"Reliable and kind. Jay made our vacation worry-free."</p>
+                    <div class="font-semibold text-gray-800">– David R.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 mb-4 italic">"Jay & Aarion are lifesavers! My husky has tons of energy, and their walks leave him happy and calm. I trust them completely."</p>
+                    <div class="font-semibold text-gray-800">– Amanda T.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 mb-4 italic">"I've used their pet sitting service twice now, and both times I came home to a relaxed, well-cared-for cat. Highly recommend!"</p>
+                    <div class="font-semibold text-gray-800">– Marcus L.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 mb-4 italic">"They treat my dog like family. Always punctual, super friendly, and my pup gets excited every time they arrive."</p>
+                    <div class="font-semibold text-gray-800">– Rachel S.</div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="star-rating">★★★★★</div>
+                    <p class="text-gray-600 mb-4 italic">"Professional, reliable, and genuinely kind. I've never felt more at ease leaving my pets in someone else's hands."</p>
+                    <div class="font-semibold text-gray-800">– Kevin J.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 playful-font">Simple, Transparent Pricing</h2>
+                <div class="w-24 h-2 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl text-gray-600">Affordable, transparent pricing for quality pet care services</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-b from-white to-orange-50 border-2 border-orange-200 rounded-2xl p-8 text-center card-hover">
+                    <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl">🐕</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Dog Walking</h3>
+                    <div class="text-4xl font-bold text-orange-500 mb-2">$25</div>
+                    <p class="text-gray-600 mb-6">30 minutes</p>
+                    <ul class="text-left space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-orange-500 mr-2">✓</span> <span>Customized walk duration</span></li>
+                        <li class="flex items-center"><span class="text-orange-500 mr-2">✓</span> <span>Photo updates</span></li>
+                        <li class="flex items-center"><span class="text-orange-500 mr-2">✓</span> <span>Potty breaks & playtime</span></li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full">Book Now</a>
+                </div>
+                <div class="bg-gradient-to-b from-white to-teal-50 border-2 border-teal-200 rounded-2xl p-8 text-center card-hover">
+                    <div class="teal-gradient w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl">🏠</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Pet Sitting</h3>
+                    <div class="text-4xl font-bold text-teal-500 mb-2">$35</div>
+                    <p class="text-gray-600 mb-6">1 hour</p>
+                    <ul class="text-left space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-teal-500 mr-2">✓</span> <span>Feeding & fresh water</span></li>
+                        <li class="flex items-center"><span class="text-teal-500 mr-2">✓</span> <span>Companionship & cuddles</span></li>
+                        <li class="flex items-center"><span class="text-teal-500 mr-2">✓</span> <span>Litter box maintenance</span></li>
+                    </ul>
+                    <a href="#contact" class="w-full bg-teal-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-teal-600 transition-colors text-center block">Book Now</a>
+                </div>
+                <div class="bg-gradient-to-b from-white to-purple-50 border-2 border-purple-200 rounded-2xl p-8 text-center card-hover">
+                    <div class="purple-gradient w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-white text-2xl">✂️</span>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Grooming</h3>
+                    <div class="text-4xl font-bold text-purple-500 mb-2">$25+</div>
+                    <p class="text-gray-600 mb-6">Varies</p>
+                    <ul class="text-left space-y-3 mb-8">
+                        <li class="flex items-center"><span class="text-purple-500 mr-2">✓</span> <span>Brushing & de-shedding</span></li>
+                        <li class="flex items-center"><span class="text-purple-500 mr-2">✓</span> <span>Nail trimming</span></li>
+                        <li class="flex items-center"><span class="text-purple-500 mr-2">✓</span> <span>Gentle, stress-free baths</span></li>
+                    </ul>
+                    <a href="#contact" class="w-full bg-purple-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-purple-600 transition-colors text-center block">Book Now</a>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <p class="text-lg text-gray-600 mb-4">Custom packages available. Contact us for details.</p>
+                <a href="#contact" class="text-orange-500 font-semibold hover:text-orange-600">Get Custom Quote →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-20 bg-gradient-to-br from-orange-50 to-yellow-50">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 playful-font">Frequently Asked Questions</h2>
+                <div class="w-24 h-2 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl text-gray-600">Got questions? We've got answers!</p>
+            </div>
+            <div class="space-y-4">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>What areas do you serve?</span>
+                        <svg class="faq-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        We proudly serve Gilbert, Mesa, Chandler, and surrounding areas in Arizona. Contact us to confirm service availability in your specific location.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>Are you insured?</span>
+                        <svg class="faq-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Yes, we are fully insured for your peace of mind. We carry comprehensive liability insurance to protect both your pets and your property.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>Can I meet you before booking?</span>
+                        <svg class="faq-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        Absolutely! We offer free meet-and-greets so you and your pet can get comfortable with us before scheduling regular services. This helps ensure the best possible care for your furry friend.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)"><span>What happens if my pet has special needs?</span>
+                        <svg class="faq-icon w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                    <div class="faq-answer">
+                        We're experienced with pets of all temperaments and needs. During our meet-and-greet, we'll discuss your pet's specific requirements, medications, behavioral considerations, and create a customized care plan.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog/Tips Section -->
+    <section id="blog" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold text-gray-800 mb-6 playful-font">Pet Care Tips & Advice</h2>
+                <div class="w-24 h-2 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">Helpful tips to keep your furry friends happy and healthy</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">🚶</div>
+                    <h3 class="text-xl font-bold mb-3">5 Tips for Happy Dog Walks</h3>
+                    <p class="text-gray-600 mb-4">Make every walk enjoyable for both you and your pup with these simple tips.</p>
+                    <a href="#" class="text-orange-500 font-semibold">Read more →</a>
+                </div>
+                <div class="bg-gradient-to-br from-teal-50 to-teal-100 rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">🏡</div>
+                    <h3 class="text-xl font-bold mb-3">Preparing Your Home for a Pet Sitter</h3>
+                    <p class="text-gray-600 mb-4">Ensure a stress-free experience for your pet and sitter with this checklist.</p>
+                    <a href="#" class="text-teal-500 font-semibold">Read more →</a>
+                </div>
+                <div class="bg-gradient-to-br from-purple-50 to-purple-100 rounded-2xl p-6 card-hover">
+                    <div class="text-4xl mb-4">🛁</div>
+                    <h3 class="text-xl font-bold mb-3">Stress-Free Grooming at Home</h3>
+                    <p class="text-gray-600 mb-4">Learn how to make bath time a positive experience for your pet.</p>
+                    <a href="#" class="text-purple-500 font-semibold">Read more →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-gradient-to-br from-gray-800 to-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl lg:text-5xl font-bold mb-6 playful-font">Get In Touch</h2>
+                <div class="w-24 h-2 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-8 rounded-full"></div>
+                <p class="text-xl opacity-90">Ready to give your pet the care they deserve? Contact us today!</p>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-12">
+                <h3 class="text-2xl font-bold mb-6 text-center">Send Us a Message</h3>
+                
+                <!-- Netlify Contact Form -->
+                <form name="contact" method="POST" data-netlify="true" class="space-y-6">
+                    <input type="hidden" name="form-name" value="contact" />
                     
-                    <!-- SIMPLIFIED FORM - This should work -->
-                    <form name="contact" method="POST" data-netlify="true" class="space-y-4">
-                        <input type="hidden" name="form-name" value="contact" />
-                        
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Your Name *</label>
+                            <label for="name" class="block text-sm font-medium mb-2">Your Name *</label>
                             <input type="text" id="name" name="name" required 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition">
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-white placeholder-white/60">
                         </div>
                         
                         <div>
-                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email *</label>
+                            <label for="email" class="block text-sm font-medium mb-2">Email *</label>
                             <input type="email" id="email" name="email" required 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition">
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-white placeholder-white/60">
                         </div>
-                        
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+                            <label for="phone" class="block text-sm font-medium mb-2">Phone</label>
                             <input type="tel" id="phone" name="phone" 
-                                   class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
+                                   class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-white placeholder-white/60"
                                    placeholder="(xxx) xxx-xxxx">
                         </div>
                         
                         <div>
-                            <label for="service" class="block text-sm font-medium text-gray-700 mb-1">Service Needed</label>
+                            <label for="service" class="block text-sm font-medium mb-2">Service Needed</label>
                             <select id="service" name="service" 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition">
-                                <option value="">Select a service</option>
-                                <option value="dog-walking">Dog Walking</option>
-                                <option value="pet-sitting">Pet Sitting</option>
-                                <option value="grooming">Grooming</option>
-                                <option value="multiple">Multiple Services</option>
-                                <option value="consultation">Consultation</option>
+                                    class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-white">
+                                <option value="" class="text-gray-800">Select a service</option>
+                                <option value="dog-walking" class="text-gray-800">Dog Walking</option>
+                                <option value="pet-sitting" class="text-gray-800">Pet Sitting</option>
+                                <option value="grooming" class="text-gray-800">Grooming</option>
+                                <option value="multiple" class="text-gray-800">Multiple Services</option>
+                                <option value="consultation" class="text-gray-800">Consultation</option>
                             </select>
                         </div>
+                    </div>
 
-                        <div>
-                            <label for="pet-type" class="block text-sm font-medium text-gray-700 mb-1">Pet Type</label>
-                            <select id="pet-type" name="pet-type" 
-                                    class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition">
-                                <option value="">Select pet type</option>
-                                <option value="dog">Dog</option>
-                                <option value="cat">Cat</option>
-                                <option value="both">Both Dog and Cat</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Message *</label>
-                            <textarea id="message" name="message" rows="4" required 
-                                      class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition"
-                                      placeholder="Tell us about your pet(s), their needs, and any special requirements..."></textarea>
-                        </div>
-                        
-                        <button type="submit" 
-                                class="w-full bg-orange-500 text-white py-4 px-6 rounded-lg font-bold text-lg hover:bg-orange-600 transition duration-300">
-                            Send Message
-                        </button>
-                        
-                        <p class="text-sm text-gray-500 text-center mt-4">
-                            We'll respond within 24 hours
-                        </p>
-                    </form>
+                    <div>
+                        <label for="pet-type" class="block text-sm font-medium mb-2">Pet Type</label>
+                        <select id="pet-type" name="pet-type" 
+                                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-white">
+                            <option value="" class="text-gray-800">Select pet type</option>
+                            <option value="dog" class="text-gray-800">Dog</option>
+                            <option value="cat" class="text-gray-800">Cat</option>
+                            <option value="both" class="text-gray-800">Both Dog and Cat</option>
+                            <option value="other" class="text-gray-800">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block text-sm font-medium mb-2">Message *</label>
+                        <textarea id="message" name="message" rows="4" required 
+                                  class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-white placeholder-white/60"
+                                  placeholder="Tell us about your pet(s), their needs, and any special requirements..."></textarea>
+                    </div>
+                    
+                    <button type="submit" 
+                            class="w-full bg-gradient-to-r from-orange-500 to-orange-600 text-white py-4 px-6 rounded-lg font-bold text-lg hover:from-orange-600 hover:to-orange-700 transition duration-300 shadow-lg">
+                        Send Message
+                    </button>
+                    
+                    <p class="text-sm text-center mt-4 opacity-80">
+                        We'll respond within 24 hours
+                    </p>
+                </form>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                    <div class="text-3xl mb-4">📞</div>
+                    <h3 class="text-xl font-bold mb-3">Jay</h3>
+                    <p class="text-orange-300 font-semibold text-lg">763-313-2815</p>
+                    <p class="text-sm opacity-80 mt-2">Available for all services</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                    <div class="text-3xl mb-4">📞</div>
+                    <h3 class="text-xl font-bold mb-3">Aarion</h3>
+                    <p class="text-teal-300 font-semibold text-lg">612-472-0096</p>
+                    <p class="text-sm opacity-80 mt-2">Available for all services</p>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 card-hover">
+                    <div class="text-3xl mb-4">📧</div>
+                    <h3 class="text-xl font-bold mb-3">Email Us</h3>
+                    <p class="text-yellow-300 font-semibold text-lg break-all">walkswithjayandaarion@yahoo.com</p>
+                    <p class="text-sm opacity-80 mt-2">We respond within 24 hours</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <div class="bg-white/10 backdrop-blur-sm rounded-2xl p-6 inline-block">
+                    <h3 class="text-xl font-bold mb-3">Service Areas</h3>
+                    <p class="opacity-90">Gilbert, Mesa, Chandler, and surrounding areas in Arizona</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="max-w-6xl mx-auto px-4 text-center">
-            <p class="text-xl font-bold mb-4">Walks with Jay & Aarion Pet Services</p>
-            <p class="text-gray-300 mb-6">Professional pet care services in Gilbert, AZ</p>
-            <p class="text-gray-400">&copy; 2024 Walks with Jay & Aarion. All rights reserved.</p>
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center mb-6">
+                        <div class="w-10 h-10 mr-3 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full flex items-center justify-center">
+                            <span class="text-white font-bold">🐾</span>
+                        </div>
+                        <span class="text-2xl font-bold playful-font">Walks with Jay & Aarion</span>
+                    </div>
+                    <p class="text-gray-300 mb-6 leading-relaxed">Professional pet care services in Gilbert, AZ. We provide compassionate, reliable care for your furry family members with dog walking, pet sitting, and grooming services.</p>
+                    <div class="flex space-x-4">
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                            <span class="text-lg">📱</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                            <span class="text-lg">📷</span>
+                        </div>
+                        <div class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                            <span class="text-lg">👍</span>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="text-gray-300 hover:text-orange-400 transition-colors">Home</a></li>
+                        <li><a href="#services" class="text-gray-300 hover:text-orange-400 transition-colors">Services</a></li>
+                        <li><a href="#gallery" class="text-gray-300 hover:text-orange-400 transition-colors">Gallery</a></li>
+                        <li><a href="#testimonials" class="text-gray-300 hover:text-orange-400 transition-colors">Reviews</a></li>
+                        <li><a href="#pricing" class="text-gray-300 hover:text-orange-400 transition-colors">Pricing</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-orange-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-6">Business Hours</h3>
+                    <div class="space-y-2 text-gray-300">
+                        <p><span class="font-medium">Monday - Friday:</span> 8:00 AM - 9:00 PM</p>
+                        <p><span class="font-medium">Saturday:</span> 9:00 AM - 6:00 PM</p>
+                        <p><span class="font-medium">Sunday:</span> 9:00 AM - 6:00 PM</p>
+                        <p class="text-sm text-gray-400 mt-4">Emergency services available by appointment</p>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <p class="text-gray-400 mb-4 md:mb-0">© 2024 Walks with Jay & Aarion Pet Services. All rights reserved.</p>
+                    <div class="flex space-x-6">
+                        <button id="privacy-btn" class="text-gray-400 hover:text-orange-400 transition-colors">Privacy Policy</button>
+                        <button id="terms-btn" class="text-gray-400 hover:text-orange-400 transition-colors">Terms of Service</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="privacy-close">×</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Privacy Policy</h2>
+            <div class="space-y-4 text-gray-600">
+                <p><strong>Effective Date:</strong> January 1, 2024</p>
+                <h3 class="text-xl font-semibold text-gray-800">Information We Collect</h3>
+                <p>We collect information you provide directly to us, such as when you contact us for pet care services, including your name, contact information, and details about your pets.</p>
+                <h3 class="text-xl font-semibold text-gray-800">How We Use Your Information</h3>
+                <p>We use the information we collect to provide, maintain, and improve our pet care services, communicate with you about your pet's care, and ensure the safety and well-being of your pets.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Information Sharing</h3>
+                <p>We do not sell, trade, or otherwise transfer your personal information to third parties without your consent, except as described in this policy or as required by law.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Data Security</h3>
+                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Contact Us</h3>
+                <p>If you have any questions about this Privacy Policy, please contact us at walkswithjayandaarion@yahoo.com</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="terms-close">×</span>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6">Terms of Service</h2>
+            <div class="space-y-4 text-gray-600">
+                <p><strong>Effective Date:</strong> January 1, 2024</p>
+                <h3 class="text-xl font-semibold text-gray-800">Service Agreement</h3>
+                <p>By using our pet care services, you agree to these terms and conditions. Our services include dog walking, pet sitting, and basic grooming as described on our website.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Client Responsibilities</h3>
+                <p>Clients must provide accurate information about their pets, including health conditions, behavioral issues, and emergency contact information. All pets must be up-to-date on vaccinations.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Liability</h3>
+                <p>While we are fully insured and take every precaution to ensure your pet's safety, clients acknowledge that pet care involves inherent risks. We are not liable for pre-existing health conditions or behavioral issues.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Cancellation Policy</h3>
+                <p>Services may be cancelled with 24 hours notice. Emergency cancellations will be handled on a case-by-case basis.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Payment Terms</h3>
+                <p>Payment is due at the time of service unless other arrangements have been made. We accept cash, check, and electronic payments.</p>
+                <h3 class="text-xl font-semibold text-gray-800">Contact Information</h3>
+                <p>For questions about these terms, please contact us at walkswithjayandaarion@yahoo.com</p>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Mobile menu toggle
-        document.getElementById('menu-btn').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+        // Mobile menu functionality
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
         });
 
         // Smooth scrolling for navigation links
@@ -244,18 +869,66 @@
                         behavior: 'smooth',
                         block: 'start'
                     });
-                    // Close mobile menu after clicking
+                    // Close mobile menu if open
                     document.getElementById('mobile-menu').classList.add('hidden');
                 }
             });
         });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const menu = document.getElementById('mobile-menu');
-            const menuBtn = document.getElementById('menu-btn');
-            if (menu && menuBtn && !menu.contains(e.target) && !menuBtn.contains(e.target)) {
-                menu.classList.add('hidden');
+        // FAQ functionality
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.classList.remove('rotated');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer.active').forEach(activeAnswer => {
+                    activeAnswer.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-icon.rotated').forEach(rotatedIcon => {
+                    rotatedIcon.classList.remove('rotated');
+                });
+                
+                // Open this FAQ
+                answer.classList.add('active');
+                icon.classList.add('rotated');
+            }
+        }
+
+        // Modal functionality
+        const privacyModal = document.getElementById('privacy-modal');
+        const termsModal = document.getElementById('terms-modal');
+        const privacyBtn = document.getElementById('privacy-btn');
+        const termsBtn = document.getElementById('terms-btn');
+        const privacyClose = document.getElementById('privacy-close');
+        const termsClose = document.getElementById('terms-close');
+
+        privacyBtn.addEventListener('click', () => {
+            privacyModal.style.display = 'block';
+        });
+
+        termsBtn.addEventListener('click', () => {
+            termsModal.style.display = 'block';
+        });
+
+        privacyClose.addEventListener('click', () => {
+            privacyModal.style.display = 'none';
+        });
+
+        termsClose.addEventListener('click', () => {
+            termsModal.style.display = 'none';
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === privacyModal) {
+                privacyModal.style.display = 'none';
+            }
+            if (e.target === termsModal) {
+                termsModal.style.display = 'none';
             }
         });
     </script>
