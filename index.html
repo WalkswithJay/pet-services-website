@@ -296,12 +296,6 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
-        .hero-subtext {
-            background: rgba(255, 255, 255, 0.25);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-        
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem !important;
@@ -378,7 +372,15 @@
             <div class="fade-in">
                 <h1 class="hero-title text-4xl lg:text-5xl font-bold mb-4 leading-tight playful-font hero-text">Walks with Jay & Aarion <span class="text-yellow-300">Pet Services</span></h1>
                 <p class="hero-subtitle text-xl lg:text-xl mb-6 opacity-95 font-semibold hero-text">🐶 Reliable Pet Care with a Personal Touch</p>
-                <p class="hero-description text-base mb-8 opacity-95 bg-white/25 p-4 rounded-2xl backdrop-blur-sm border border-white/30">Welcome to Walks with Jay & Aarion Pet Services — your trusted partner for dog walking, pet sitting, and grooming in Gilbert, AZ. Whether you're heading to work for the day or out of town, we treat your pets like family.</p>
+                
+                <!-- SOLID BLACK BACKGROUND FOR MAXIMUM VISIBILITY -->
+                <div class="hero-description mb-8 bg-black p-6 rounded-2xl border-2 border-yellow-400 shadow-2xl transform hover:scale-105 transition-transform duration-300">
+                    <p class="text-white text-lg lg:text-xl leading-relaxed">
+                        <span class="block text-yellow-400 font-bold text-xl mb-3">Welcome to Walks with Jay & Aarion Pet Services</span>
+                        Your trusted partner for <strong class="text-yellow-300">dog walking</strong>, <strong class="text-yellow-300">pet sitting</strong>, and <strong class="text-yellow-300">grooming</strong> in Gilbert, AZ. Whether you're heading to work for the day or out of town, <strong class="text-yellow-300">we treat your pets like family.</strong>
+                    </p>
+                </div>
+                
                 <div class="flex flex-col sm:flex-row gap-4">
                     <a href="#contact" class="btn-primary text-center pulse">Book Now</a>
                     <a href="#services" class="btn-secondary text-center">Our Services</a>
