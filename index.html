@@ -24,7 +24,7 @@
       "@type": "LocalBusiness",
       "name": "Walks with Jay & Aarion",
       "description": "Professional pet care services in Gilbert, Arizona",
-      "url": "https://walkswithjayandaarion.com",
+      "url": "https://walkswithjayandaarion.netlify.app",
       "telephone": "763-313-2815",
       "address": {
         "@type": "PostalAddress",
@@ -296,6 +296,19 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
+        /* Special Offer Styles */
+        .special-offer {
+            background: linear-gradient(135deg, #ff6b6b, #ffa500, #ffd93d);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.5rem !important;
@@ -357,6 +370,14 @@
         </div>
     </nav>
 
+    <!-- Special Offer Banner -->
+    <div class="special-offer text-white py-4 mt-20 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <p class="font-bold text-lg">🎉 <strong>FOUNDING CLIENT SPECIAL!</strong> First Walk FREE • 10% Off First Month • Locked-In Rates for 6 Months</p>
+            <p class="text-sm mt-1">Limited to first 10 new clients - <a href="#contact" class="underline font-bold">Claim Your Spot Now!</a></p>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section id="home" class="gradient-bg min-h-screen flex items-center justify-center text-white pt-20 relative overflow-hidden paw-print">
         <div class="absolute top-10 right-10 floating">
@@ -382,18 +403,15 @@
                 </div>
                 
                 <div class="flex flex-col sm:flex-row gap-4">
-                    <a href="#contact" class="btn-primary text-center pulse">Book Now</a>
+                    <a href="#contact" class="btn-primary text-center pulse">Book Your FREE Walk</a>
                     <a href="#services" class="btn-secondary text-center">Our Services</a>
                 </div>
             </div>
             <div class="flex justify-center lg:justify-end mt-8 lg:mt-0">
                 <div class="relative">
-                    <div class="w-80 h-80 lg:w-96 lg:h-96 bg-white/25 rounded-3xl backdrop-blur-sm border-2 border-white/40 flex items-center justify-center">
-                        <div class="text-center">
-                            <span class="text-7xl mb-4 block">🐩</span>
-                            <p class="text-white font-semibold text-lg">Your Happy Pet Awaits!</p>
-                        </div>
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                         alt="Happy dog with pet sitter" 
+                         class="w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-3xl shadow-2xl border-4 border-white">
                     <div class="absolute -bottom-4 -right-4 w-16 h-16 bg-yellow-300 rounded-full flex items-center justify-center text-3xl z-20 shadow-lg">
                         ❤️
                     </div>
@@ -414,16 +432,16 @@
                     <div class="text-gray-600 text-sm">Insured & Bonded</div>
                 </div>
                 <div class="trust-badge">
-                    <div class="text-2xl font-bold text-teal-500">24/7</div>
-                    <div class="text-gray-600 text-sm">Support</div>
-                </div>
-                <div class="trust-badge">
-                    <div class="text-2xl font-bold text-purple-500">5.0★</div>
+                    <div class="text-2xl font-bold text-teal-500">5.0★</div>
                     <div class="text-gray-600 text-sm">Rating</div>
                 </div>
                 <div class="trust-badge">
-                    <div class="text-2xl font-bold text-green-500">100+</div>
-                    <div class="text-gray-600 text-sm">Happy Pets</div>
+                    <div class="text-2xl font-bold text-purple-500">FREE</div>
+                    <div class="text-gray-600 text-sm">Meet & Greet</div>
+                </div>
+                <div class="trust-badge">
+                    <div class="text-2xl font-bold text-green-500">24/7</div>
+                    <div class="text-gray-600 text-sm">Support</div>
                 </div>
             </div>
         </div>
@@ -441,9 +459,9 @@
                 <!-- Dog Walking Card -->
                 <div class="service-card card-hover">
                     <div class="text-center mb-4">
-                        <div class="w-16 h-16 gradient-bg rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
-                            🐕
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
+                             alt="Dog walking service" 
+                             class="w-16 h-16 rounded-full object-cover mx-auto mb-3 border-2 border-orange-400">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Dog Walking</h3>
                     </div>
                     <p class="text-gray-600 leading-relaxed mb-4">Daily walks, potty breaks, and playtime tailored to your dog's energy level and personality.</p>
@@ -461,9 +479,9 @@
                 <!-- Pet Sitting Card -->
                 <div class="service-card card-hover">
                     <div class="text-center mb-4">
-                        <div class="w-16 h-16 teal-gradient rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
-                            🏠
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
+                             alt="Pet sitting service" 
+                             class="w-16 h-16 rounded-full object-cover mx-auto mb-3 border-2 border-teal-400">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Pet Sitting</h3>
                     </div>
                     <p class="text-gray-600 leading-relaxed mb-4">In-home visits for feeding, cuddles, and companionship while you're away.</p>
@@ -481,9 +499,9 @@
                 <!-- Grooming Card -->
                 <div class="service-card card-hover">
                     <div class="text-center mb-4">
-                        <div class="w-16 h-16 purple-gradient rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
-                            ✂️
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1560743641-3914f2c45636?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&q=80" 
+                             alt="Pet grooming service" 
+                             class="w-16 h-16 rounded-full object-cover mx-auto mb-3 border-2 border-purple-400">
                         <h3 class="text-xl font-bold text-gray-800 mb-2">Grooming</h3>
                     </div>
                     <p class="text-gray-600 leading-relaxed mb-4">Basic grooming services to keep your pet looking and feeling their best.</p>
@@ -511,35 +529,53 @@
             </div>
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                             alt="Sarah M." 
+                             class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-orange-400">
+                        <div>
+                            <div class="font-semibold text-gray-800">Sarah M.</div>
+                            <div class="text-gray-500 text-sm">Gilbert, AZ</div>
+                        </div>
+                    </div>
                     <div class="star-rating">★★★★★</div>
                     <p class="text-gray-600 mb-4 italic">"Aarion is amazing with our golden retriever! Always on time, super friendly, and our dog loves him."</p>
-                    <div class="font-semibold text-gray-800">– Sarah M.</div>
                 </div>
                 <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                             alt="David R." 
+                             class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-orange-400">
+                        <div>
+                            <div class="font-semibold text-gray-800">David R.</div>
+                            <div class="text-gray-500 text-sm">Gilbert, AZ</div>
+                        </div>
+                    </div>
                     <div class="star-rating">★★★★★</div>
-                    <p class="text-gray-600 mb-4 italic">"Reliable and kind. Jay made our vacation worry-free."</p>
-                    <div class="font-semibold text-gray-800">– David R.</div>
+                    <p class="text-gray-600 mb-4 italic">"Reliable and kind. Jay made our vacation worry-free with daily updates and photos of our cat."</p>
                 </div>
                 <div class="testimonial-card">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                             alt="Amanda T." 
+                             class="w-12 h-12 rounded-full object-cover mr-4 border-2 border-orange-400">
+                        <div>
+                            <div class="font-semibold text-gray-800">Amanda T.</div>
+                            <div class="text-gray-500 text-sm">Gilbert, AZ</div>
+                        </div>
+                    </div>
                     <div class="star-rating">★★★★★</div>
                     <p class="text-gray-600 mb-4 italic">"Jay & Aarion are lifesavers! My husky has tons of energy, and their walks leave him happy and calm. I trust them completely."</p>
-                    <div class="font-semibold text-gray-800">– Amanda T.</div>
                 </div>
-                <div class="testimonial-card">
-                    <div class="star-rating">★★★★★</div>
-                    <p class="text-gray-600 mb-4 italic">"I've used their pet sitting service twice now, and both times I came home to a relaxed, well-cared-for cat. Highly recommend!"</p>
-                    <div class="font-semibold text-gray-800">– Marcus L.</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="star-rating">★★★★★</div>
-                    <p class="text-gray-600 mb-4 italic">"They treat my dog like family. Always punctual, super friendly, and my pup gets excited every time they arrive."</p>
-                    <div class="font-semibold text-gray-800">– Rachel S.</div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="star-rating">★★★★★</div>
-                    <p class="text-gray-600 mb-4 italic">"Professional, reliable, and genuinely kind. I've never felt more at ease leaving my pets in someone else's hands."</p>
-                    <div class="font-semibold text-gray-800">– Kevin J.</div>
-                </div>
+            </div>
+            
+            <!-- Call to Action After Testimonials -->
+            <div class="text-center mt-12 bg-gradient-to-r from-orange-400 to-orange-500 rounded-2xl p-8 text-white">
+                <h3 class="text-2xl font-bold mb-4">Ready to Give Your Pet the Best Care?</h3>
+                <p class="mb-6 text-lg">Join our growing family of happy pets in Gilbert</p>
+                <a href="#contact" class="bg-white text-orange-500 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition-colors inline-block">
+                    Book Your FREE First Walk
+                </a>
             </div>
         </div>
     </section>
@@ -548,8 +584,9 @@
     <section id="pricing" class="py-16 bg-white">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-12">
-                <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4 playful-font">Pricing</h2>
+                <h2 class="text-3xl lg:text-4xl font-bold text-gray-800 mb-4 playful-font">Simple, Transparent Pricing</h2>
                 <div class="w-20 h-1.5 bg-gradient-to-r from-orange-400 to-orange-500 mx-auto mb-6 rounded-full"></div>
+                <p class="text-lg text-gray-600">No hidden fees, no complicated packages</p>
             </div>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="bg-gradient-to-b from-white to-orange-50 border-2 border-orange-200 rounded-2xl p-6 text-center card-hover">
@@ -596,7 +633,7 @@
                 </div>
             </div>
             <div class="text-center mt-10">
-                <p class="text-gray-600 mb-3">Custom packages available. Contact us for details.</p>
+                <p class="text-gray-600 mb-3">Custom packages and multi-pet discounts available</p>
                 <a href="#contact" class="text-orange-500 font-semibold hover:text-orange-600 text-sm">Get Custom Quote →</a>
             </div>
         </div>
